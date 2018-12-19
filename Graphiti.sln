@@ -7,7 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		LICENSE = LICENSE
+		README.md = README.md
 		stylecop.json = stylecop.json
+		Test.Project.ruleset = Test.Project.ruleset
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jota.Graphiti", "src\Jota.Graphiti\Jota.Graphiti.csproj", "{2C458CB9-FEF2-4A7E-A240-3BAA1BB6B724}"
