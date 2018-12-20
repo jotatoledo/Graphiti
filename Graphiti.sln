@@ -7,14 +7,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		LICENSE = LICENSE
+		Project.Test.ruleset = Project.Test.ruleset
 		README.md = README.md
 		stylecop.json = stylecop.json
-		Test.Project.ruleset = Test.Project.ruleset
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jota.Graphiti", "src\Jota.Graphiti\Jota.Graphiti.csproj", "{2C458CB9-FEF2-4A7E-A240-3BAA1BB6B724}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graphiti", "src\Graphiti\Graphiti.csproj", "{5D56F901-50C1-440E-AC3C-3102AF97A4FD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jota.Graphiti.Test", "test\Jota.Graphiti.Test\Jota.Graphiti.Test.csproj", "{4DD06D51-7258-4923-9AAD-B843D70BFE2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graphiti.Test", "test\Graphiti.Test\Graphiti.Test.csproj", "{7E807034-ABE1-4D69-850F-61B93B9F56D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,14 +22,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2C458CB9-FEF2-4A7E-A240-3BAA1BB6B724}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C458CB9-FEF2-4A7E-A240-3BAA1BB6B724}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C458CB9-FEF2-4A7E-A240-3BAA1BB6B724}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C458CB9-FEF2-4A7E-A240-3BAA1BB6B724}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4DD06D51-7258-4923-9AAD-B843D70BFE2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4DD06D51-7258-4923-9AAD-B843D70BFE2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4DD06D51-7258-4923-9AAD-B843D70BFE2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4DD06D51-7258-4923-9AAD-B843D70BFE2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D56F901-50C1-440E-AC3C-3102AF97A4FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D56F901-50C1-440E-AC3C-3102AF97A4FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D56F901-50C1-440E-AC3C-3102AF97A4FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D56F901-50C1-440E-AC3C-3102AF97A4FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E807034-ABE1-4D69-850F-61B93B9F56D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E807034-ABE1-4D69-850F-61B93B9F56D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E807034-ABE1-4D69-850F-61B93B9F56D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E807034-ABE1-4D69-850F-61B93B9F56D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

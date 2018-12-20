@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Test.Project.ruleset" Description="A ruleset to be used on test projects" ToolsVersion="10.0">
+	<Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
+		<Rule Id="SA1652" Action="None" />
+	</Rules>
+</RuleSet>
