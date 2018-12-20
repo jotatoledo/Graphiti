@@ -13,16 +13,16 @@ namespace Jota.Graphiti.Test
 
     public class UnorderedEdgeComparerTests
     {
-        public static IEnumerable<object[]> ValueTypeData => new[]
+        public static IEnumerable<object[]> Edges => new[]
         {
+            new object[] { TestEdge.Wrap('a', 'b') },
             new object[] { new Edge<char>('a', 'b') },
             new object[] { new Edge<double>(1.0, 2.0) },
-            new object[] { new Edge<int>(1, 0) },
-            new object[] { new Edge<string>("a", "b") }
+            new object[] { new Edge<int>(1, 0) }
         };
 
         [Theory]
-        [MemberData(nameof(ValueTypeData))]
+        [MemberData(nameof(Edges))]
         public void Equals_Should_ReturnTrue_When_EquatingSameEdges<TVertex>(IEdge<TVertex> edge)
         {
             var sut = this.CreateSystemUnderTest<TVertex>();
@@ -34,7 +34,7 @@ namespace Jota.Graphiti.Test
         }
 
         [Theory]
-        [MemberData(nameof(ValueTypeData))]
+        [MemberData(nameof(Edges))]
         public void Equals_Should_ReturnTrue_When_EquatingDifferentEdgesWithSameVertices<TVertex>(IEdge<TVertex> edge)
         {
             var sut = this.CreateSystemUnderTest<TVertex>();
@@ -46,20 +46,56 @@ namespace Jota.Graphiti.Test
         }
 
         [Theory]
-        [MemberData(nameof(ValueTypeData))]
+        [MemberData(nameof(Edges))]
         public void Equals_Should_ReturnTrue_When_EquatingAgainstEdgeWithInvertedOrder<TVertex>(IEdge<TVertex> edge)
         {
             var sut = this.CreateSystemUnderTest<TVertex>();
 
-            var result = sut.Equals(edge, InvertEdge(edge));
+            var result = sut.Equals(edge, edge.Invert());
 
             result.Should()
                 .BeTrue();
         }
 
-        private static IEdge<TVertex> InvertEdge<TVertex>(IEdge<TVertex> edge)
+        [Theory]
+        [MemberData(nameof(Edges))]
+        public void Should_GenerateSameHashCode_When_HashingInvertedEdges<TVertex>(IEdge<TVertex> edge)
         {
-            return CreateEdge(edge.Target, edge.Source);
+            var sut = this.CreateSystemUnderTest<TVertex>();
+            var expectedHashCode = sut.GetHashCode(edge.Invert());
+
+            var edgeHashCode = sut.GetHashCode(edge);
+
+            edgeHashCode.Should()
+                .Be(expectedHashCode);
+        }
+
+        [Theory]
+        [MemberData(nameof(Edges))]
+        public void Should_GenerateSameHashCode_When_HashingSameEdgeMultipleTimes<TVertex>(IEdge<TVertex> edge)
+        {
+            var sut = this.CreateSystemUnderTest<TVertex>();
+
+            var edgeHashCode = sut.GetHashCode(edge);
+
+            edgeHashCode.Should()
+                .Be(sut.GetHashCode(edge));
+        }
+
+        [Theory]
+        [MemberData(nameof(Edges))]
+        public void Should_GenerateSameHashCode_When_HashingDifferentEdgesWithSameVertices<TVertex>(IEdge<TVertex> edge)
+        {
+            var sut = this.CreateSystemUnderTest<TVertex>();
+            var edgeWithSameVertices = edge.Invert().Invert();
+            var expectedHashCode = sut.GetHashCode(edgeWithSameVertices);
+
+            var edgeHashCode = sut.GetHashCode(edge);
+
+            edge.Should()
+                .NotBeSameAs(edgeWithSameVertices);
+            edgeHashCode.Should()
+                .Be(expectedHashCode);
         }
 
         private static IEdge<TVertex> CloneEdge<TVertex>(IEdge<TVertex> edge)

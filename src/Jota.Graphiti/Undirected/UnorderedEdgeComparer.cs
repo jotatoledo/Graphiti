@@ -10,8 +10,7 @@ namespace Jota.Graphiti
     using System.Collections.Generic;
 
     /// <summary>
-    /// An implementation of <see cref="IEqualityComparer{T}"/> that handles edges as unordered pairs
-    /// during the equality evaluation
+    /// Equates edges as unordered pairs
     /// </summary>
     /// <typeparam name="TVertex">The vertex type</typeparam>
     /// <typeparam name="TEdge">The edge type</typeparam>
@@ -19,10 +18,12 @@ namespace Jota.Graphiti
         where TEdge : IEdge<TVertex>
     {
         /// <inheritdoc/>
-        public bool Equals(TEdge x, TEdge y) => x.Equals(y)
-            || (x.Source.Equals(y.Target) && x.Target.Equals(y.Source));
+        public bool Equals(TEdge x, TEdge y) => x.Equals(y) || x.Equals(y.Invert());
 
         /// <inheritdoc/>
-        public int GetHashCode(TEdge obj) => obj.GetHashCode();
+        /// <remarks>
+        /// Based on https://stackoverflow.com/a/70375/5394220
+        /// </remarks>
+        public int GetHashCode(TEdge obj) => obj.Source.GetHashCode() ^ obj.Target.GetHashCode();
     }
 }
